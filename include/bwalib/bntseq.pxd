@@ -1,4 +1,5 @@
 from libc.stdio cimport FILE
+from zlib cimport gzFile
 
 cdef extern from "bntseq.h" nogil:
     cdef struct bntann1_t:
@@ -24,3 +25,5 @@ cdef extern from "bntseq.h" nogil:
         int n_holes
         bntamb1_t *ambs  # n_holes elements
         FILE *fp_pac
+
+    cdef int64_t bns_fasta2bntseq(gzFile fp_fa, char *prefix, int for_only)
