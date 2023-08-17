@@ -1,3 +1,6 @@
+from bwalib.bwt cimport bwt_t
+from bwalib.bntseq cimport bntseq_t
+
 cdef extern from "bwamem.h" nogil:
     cdef enum MEM_F:
         MEM_F_PE=2
@@ -95,3 +98,24 @@ cdef extern from "bwamem.h" nogil:
         int score
         int sub
         int alt_sc
+
+    cdef struct  mem_alnreg_v:
+        size_t n
+        size_t m
+        mem_alnreg_t *a
+
+    cdef mem_alnreg_v mem_align1(mem_opt_t *opt,
+                                 bwt_t *bwt,
+                                 bntseq_t *bns,
+                                 int *pac,
+                                 int l_seq,
+                                 char *seq)
+
+    cdef void mem_process_seqs(mem_opt_t *opt,
+                               bwt_t *bwt,
+                               bntseq_t *bns,
+                               int *pac,
+                               int n_processed,
+                               int n,
+                               bseq1_t *seqs,
+                               mem_pestat_t *pes0);
