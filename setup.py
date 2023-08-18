@@ -157,7 +157,7 @@ class build_ext(_build_ext):
         if isinstance(ngsreads, ImportError):
             raise RuntimeError("failed to import ngsreads") from ngsreads
         ext.include_dirs.insert(0, os.fspath(ngsreads.lib.get_include()))
-        ext.sources.extend(os.fspath(x) for x in ngsreads.lib.get_sources())
+        # ext.sources.extend(os.fspath(x) for x in ngsreads.lib.get_sources())
         # build the extension as normal
         _build_ext.build_extension(self, ext)
 
@@ -238,9 +238,9 @@ setuptools.setup(
             "ngsreads.align.bwa",
             language="c++",
             sources=[
-                os.path.join("vendor", "bwa", "kstring.c"),
                 os.path.join("vendor", "bwa", "bntseq.c"),
                 os.path.join("vendor", "bwa", "bwt.c"),
+                os.path.join("vendor", "bwa", "utils.c"),
             ],
             include_dirs=[
                 "include",
