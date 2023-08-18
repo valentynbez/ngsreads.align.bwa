@@ -241,10 +241,12 @@ setuptools.setup(
                 os.path.join("vendor", "bwa", "bntseq.c"),
                 os.path.join("vendor", "bwa", "bwt.c"),
                 os.path.join("vendor", "bwa", "utils.c"),
+                os.path.join("ngsreads", "align", "bwa.pyx")
             ],
             include_dirs=[
                 "include",
-                SETUP_FOLDER],
+                SETUP_FOLDER,
+                os.path.join("vendor", "bwa")],
             libraries=[],
         ),
     ],
