@@ -236,10 +236,18 @@ setuptools.setup(
     ext_modules=[
         Extension(
             "ngsreads.align.bwa",
-            language="c++",
+            language="c",
             sources=[
                 os.path.join("vendor", "bwa", "bntseq.c"),
+                os.path.join("vendor", "bwa", "bwa.c"),
                 os.path.join("vendor", "bwa", "bwt.c"),
+                os.path.join("vendor", "bwa", "bwtindex.c"),
+                os.path.join("vendor", "bwa", "bwt_gen.c"),
+                os.path.join("vendor", "bwa", "is.c"),
+                os.path.join("vendor", "bwa", "ksw.c"),
+                os.path.join("vendor", "bwa", "QSufSort.c"),
+                os.path.join("vendor", "bwa", "rope.c"),
+                os.path.join("vendor", "bwa", "rle.c"),
                 os.path.join("vendor", "bwa", "utils.c"),
                 os.path.join("ngsreads", "align", "bwa.pyx")
             ],
@@ -247,7 +255,7 @@ setuptools.setup(
                 "include",
                 SETUP_FOLDER,
                 os.path.join("vendor", "bwa")],
-            libraries=[],
+            libraries=["z"],
         ),
     ],
     cmdclass={
