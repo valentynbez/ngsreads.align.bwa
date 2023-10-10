@@ -25,7 +25,7 @@ class TestIndex(unittest.TestCase):
         prefix = "pack"
         with tempfile.TemporaryDirectory() as tmpdir:
             prefix = os.path.join(tmpdir, prefix)
-            pack_fasta(mock_fasta, prefix, 0)
+            _ = pack_fasta(mock_fasta, prefix, 0)
             suffixes = [".pac", ".amb", ".ann"]
             for s in suffixes:
                 self.assertTrue(os.path.isfile(prefix + s))
