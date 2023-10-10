@@ -256,6 +256,7 @@ setuptools.setup(
                 SETUP_FOLDER,
                 os.path.join("vendor", "bwa")],
             libraries=["z"],
+            extra_compile_args=["-O3"]
         ),
     ],
     cmdclass={

@@ -1,4 +1,5 @@
 from libc.stdio cimport FILE
+from libc.stdint cimport int64_t
 from zlib cimport gzFile
 
 cdef extern from "bntseq.h" nogil:
